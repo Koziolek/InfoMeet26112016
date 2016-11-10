@@ -76,6 +76,149 @@
           <p>Definicja uproszczona</p>
           <p class="fragment">Bo Erlang ma paskudną składnię</p>
         </section>
+
+        <section data-markdown>
+          <script type="text/template">
+              ### Erlang
+              ```erlang
+              -module(hello)
+              -export([hello/0, hello/1])
+              hello()->
+                io:format('~s~n', ['Hello world!']).
+              hello(List) when is_list(List) ->
+                io:format('~s~n', List).
+              my_little_secret()->
+                secret_info.
+              ```
+            </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ### Elixir
+            ```elixir
+            defmodule Hello do
+              def hello do
+                IO.puts 'Hello world!'
+              end
+              def hello(list) when is_list(list) do
+                IO.inspect list
+              end
+              defp my_little_secret do
+                :secret_info
+              end
+            end
+            ```
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            #### Zmienne
+            ```elixir
+            var = "Hello world!"
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+            var = "Hello another world!"
+            ```
+            <!-- .element: class="fragment" -->
+          </script>
+        </section>
+
+        <section>
+          <p>Zmienne są „pod spodem” wzorcami</p>
+          <aside class="notes">
+            Stąd też nazwy muszą być z małej litery
+          </aside>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            #### Zmienne jako wzorce
+            ```elixir
+            lista = [1, 2, 3, 4, 5]
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+            [head | tail ] = lista
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+            head
+            1
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+            tail
+            [2, 3, 4, 5]
+            ```
+            <!-- .element: class="fragment" -->
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            #### Struktury
+            ```elixir
+            lista = [1, 2, 3, 4, 5]
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+            krotka = {1, 2, 3, 4, 5}
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+            mapa = %{1=>2, "3"=>"4", :atom=>5}
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+            lista_asocjacyjna = [{:name,"Koziołek"}, {:age,32}]
+            mapa_asocjacyjna = %{:name=>"Koziołek", :age=>32}
+            ```
+            <!-- .element: class="fragment" -->
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            #### Funkcje anonimowe
+            ```elixir
+            suma = fn(a, b) -> a + b end
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+            suma = &(&1 + &2)
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+            suma.(2,3)
+            5
+            ```
+            <!-- .element: class="fragment" -->
+          </script>
+        </section>
+
+        <section>
+          <h4>Moduły</h4>
+          <p class="fragment">Podstawowa jednosta organizacyjna</p>
+          <p class="fragment">Można je zagnieżdżać</p>
+          <p class="fragment">Mogą zawierać struktury</p>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            #### Moduły
+            ```elixir
+            defmodule Hello do
+              def hello, do: IO.puts "Hello world"
+              def hello(list) when is_list(list), do: IO.inspect list
+              defp my_little_secret, do: :secret_info
+            end
+            ```
+            <!-- .element: class="fragment" -->
+          </script>
+        </section>
     </div>
 </div>
 
