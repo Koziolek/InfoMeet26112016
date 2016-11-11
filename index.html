@@ -219,6 +219,62 @@
             <!-- .element: class="fragment" -->
           </script>
         </section>
+
+        <section>
+          <h4>Strażnicy i wzorce</h4>
+          <p class="fragment">Strażnicy określaja warunki wywołania funkcji.</p>
+          <p class="fragment">Wzorce pozwalają na wywołania z pewnym kontekstem.</p>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            #### Strażnicy i wzorce
+            ```elixir
+            defmodule SumModule do
+              def sum(list) when is_list(list), do: _sum(list, 0)
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+              defp _sum([], acc), do: acc
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+              defp _sum([head|tail], acc), do: _sum(tail, acc+head)
+            end
+            ```
+            <!-- .element: class="fragment" -->
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+              #### Jaki będzie wynik wywołania?
+            ```elixir
+            SumModule.sum([1, 2, 3, 4])
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+              10
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+            SumModule.sum("aaa")
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+              ** (FunctionClauseError) no function clause matching in SumModule.sum/1
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+            SumModule.sum('aaa')
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+              291
+            ```
+            <!-- .element: class="fragment" -->
+          </script>
+        </section>
     </div>
 </div>
 
