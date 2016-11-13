@@ -349,8 +349,70 @@
           <h3>Makra</h3>
           <p>Elixir jest rozszerzalny</p>
           <p class="fragment">Wiele elementów składni to makra</p>
-          <p class="fragment">Struktury, </p>
+          <p class="fragment">Testy, operator potoku, dokumentacja</p>
         </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            #### Testy
+            ```elixir
+            defmodule SumModuleTest do
+              use ExUnit.Case
+              doctest SumModule
+
+              test "sum of empty list is 0" do
+                assert SumModule.sum([]) == 0
+              end
+
+            end
+            ```
+            <!-- .element: class="fragment" -->
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            #### Operator potoku <samp>|><samp>
+            ```elixir
+            "123"
+              |> String.split("", trim: true)
+              |> Enum.map(&(String.to_integer &1))
+            ```
+            <!-- .element: class="fragment" -->
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            #### Dokumentacja
+            ```elixir
+            defmodule SumModule do
+              @moduledoc """
+                Moduł sumujacy listy liczb
+              """
+
+              @doc """
+                Funkcja sumuje listę liczb
+              """
+              def sum(list) when is_list(list), do: _sum(list, 0)
+            end
+            ```
+            <!-- .element: class="fragment" -->
+          </script>
+        </section>
+
+        <section>
+          <h3>Dużo Elixira napisano w Elixirze</h3>
+        </section>
+
+        <section>
+          <h3>Współbieżność i OTP</h3>
+          <p class="fragment">Elixir działa na stosie Erlanga</p>
+          <p class="fragment">Model aktorowy</p>
+          <p class="fragment">Pełne wsparcie dla OTP</p>
+        </section>
+
+
     </div>
 </div>
 
