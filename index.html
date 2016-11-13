@@ -68,7 +68,7 @@
           <p>Dynamiczny</p>
           <p class="fragment">Funkcyjny</p>
           <p class="fragment">Silnie typowany</p>
-          <p class="fragment">Wielowątkowy</p>
+          <p class="fragment">Współbieżny</p>
           <p class="fragment">Ble, ble, ble</p>
         </section>
 
@@ -222,8 +222,8 @@
 
         <section>
           <h4>Strażnicy i wzorce</h4>
-          <p class="fragment">Strażnicy określaja warunki wywołania funkcji.</p>
-          <p class="fragment">Wzorce pozwalają na wywołania z pewnym kontekstem.</p>
+          <p class="fragment">Strażnicy określaja warunki wywołania funkcji</p>
+          <p class="fragment">Wzorce pozwalają na wywołania z pewnym kontekstem</p>
         </section>
 
         <section data-markdown>
@@ -248,7 +248,7 @@
 
         <section data-markdown>
           <script type="text/template">
-              #### Jaki będzie wynik wywołania?
+            #### Jaki będzie wynik wywołania?
             ```elixir
             SumModule.sum([1, 2, 3, 4])
             ```
@@ -274,6 +274,82 @@
             ```
             <!-- .element: class="fragment" -->
           </script>
+        </section>
+
+        <section>
+          <h3>Struktury, typy i rekordy</h3>
+          <p class="fragment">Struktury bazują na mapach</p>
+          <p class="fragment">Typy zabezpieczają nasz kod</p>
+          <p class="fragment">Rekordy to makra ułatwiające pracę</p>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            #### Struktury
+            ```elixir
+            defmodule User do
+                defstruct name: "Koziołek", age: 32
+            end
+            ```
+            ```elixir
+            iex> %User{}
+            %User{name: "Koziołek", age: 32}
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+            iex> %User{age: 33}
+            %User{name: "Koziołek", age: 33}
+            ```
+            <!-- .element: class="fragment" -->
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            #### Typy
+            ```elixir
+            defmodule Currency do
+              @type t :: {number, String.t}
+            ```
+            ```elixir
+              @spec exchange_rate(Currency.t, Currency.t) :: number
+              def exchange_rate(curr1, curr2) do
+                1
+              end
+            end
+            ```
+            <!-- .element: class="fragment" -->
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            #### Rekordy
+            ```elixir
+            defmodule User do
+              require Record
+              Record.defrecord :user, [name: "Koziołek", age: 32]
+            end
+            ```
+            ```elixir
+            iex> require User
+            iex> record = User.user()
+            {:user, "Koziołek", 32}
+            ```
+            <!-- .element: class="fragment" -->
+            ```elixir
+            iex> User.user(record, name:)
+            "Koziołek"
+            ```
+            <!-- .element: class="fragment" -->
+          </script>
+        </section>
+
+        <section>
+          <h3>Makra</h3>
+          <p>Elixir jest rozszerzalny</p>
+          <p class="fragment">Wiele elementów składni to makra</p>
+          <p class="fragment">Struktury, </p>
         </section>
     </div>
 </div>
