@@ -412,7 +412,54 @@
           <p class="fragment">Pełne wsparcie dla OTP</p>
         </section>
 
+        <section data-markdown>
+          <script type="text/template">
+            #### Najprostszy kod
+            ```elixir
+            defmodule Ping do
 
+              def listen do
+                receive do
+                  {:pong, result} -> _pong(result)
+                end
+                listen
+              end
+            #...
+            end
+            ```
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            #### Najprostszy kod
+            ```elixir
+            iex > pid = spawn(Ping, :listen, [])
+            #PID<0.119.0>
+            iex > send(pid, {:pong, "ping?"})
+            ```
+          </script>
+        </section>
+
+        <section>
+          <h3>Co więcej?</h3>
+          <p class="fragment">Język to nie wszystko</p>
+          <p class="fragment">Ważne są narzędzia</p>
+        </section>
+
+        <section>
+          <p>Mix – budowanie</p>
+          <p class="fragment">EEx – szablony</p>
+          <p class="fragment">Phoenix – web</p>
+          <p class="fragment">Hex – repozytorium</p>
+        </section>
+
+        <section>
+          <h3>Podsumowanie</h3>
+          <p class="fragment">Elixir jest prosty</p>
+          <p class="fragment">Ma przyjazna składnię</p>
+          <p class="fragment">Szybko rosnącą społeczność</p>
+        </section>
     </div>
 </div>
 
